@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="static/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://webfontworld.github.io/SCoreDream/SCoreDream.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./login.css">
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <div>
+      <div id="header">
+        <div id="mask"></div>
+        <button type="button" class="btn_menu_open"><img src="static/images/ham_btn.png"></button>
+        <div class="slide_menu">
+          <div class="menu_close">
+            <p id="slide_text"> ooo님 환영합니다. </p>
+            <button type="button" class="btn_menu_close"><img src="static/images/close_white.png"></button>
+          </div>
+          <ul class="menu_list">
+            <li onclick="location.href='login'"><a id="login_btn">로그인</a></li>
+            <li class="join_btn" onclick="location.href='register'"><a href="#">회원가입</a></li>
+            <li><a href="#">결과보기</a></li>
+            <li><a href="#">고객센터</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- 메인 동그라미 사진 및 버튼 -->
+      <div class="content">
+        <div>
+          <div style="position: sticky;">
+            <img class="title_img" src="static/images/main_title.png">
+            <img class="title_m_img" src="static/images/main_title_m.png">
+            <button class="my-detail" type="button" onclick="location.href='sub1.html'">자세히보기 >></button>
+          </div>
+        </div>
+        <div>
+          <button class="start" type="button" onclick="location.href='heart_test.html'">시작</button>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- 로그인 팝업  -->
+    <div class="login">
+      <div class="login_close_btn" onclick="offDisplay()">
+        <img src="static/images/close.png">
+      </div>
+      <p class="h2">Log-in / 로그인</p>
+      
+      <div class="login_id">
+        <h4>ID / 아이디</h4>
+        <input type="email" name="" id="" placeholder="ID를 입력하세요">
+      </div>
+      <div class="login_pw">
+        <h4>Password / 비밀번호</h4>
+        <input type="password" name="" id="" placeholder="Password를 입력하세요">
+      </div>
+      <div class="login_etc">
+        <div class="checkbox">
+          <input type="checkbox" name="" id=""> 아이디 및 비밀번호 저장
+        </div>
+        <div class="forgot_pw">
+          <a href="">비밀번호 찾기</a>
+        </div>
+      </div>
+      <div class="submit" onclick="offDisplay()">
+        <input type="submit" value="로그인">
+      </div>
+    </div>
+
+    <!-- join -->
+    <div class="container">
+      <div class="input-form-backgroud row">
+
+        <div class="input-form col-md-12 mx-auto">
+          <div class="join_close_btn" onclick="offDisplay2()">
+            <img src="static/images/close.png">
+          </div>
+          <h4 class="mb-3">회원가입</h4>
+          <form class="validation-form" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  이름을 입력해주세요.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="name">아이디</label>
+                <input type="text" class="form-control" id="name" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  이름을 입력해주세요.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="nickname">비밀번호</label>
+                <input type="password" class="form-control" id="pw" placeholder="특수문자를 포함한 6글자 이상으로 입력하세요." value="" required name="userPW" onchange="check_pw()">
+                <div class="invalid-feedback">
+                  비밀번호를 입력하세요
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="nickname">비밀번호 확인</label>
+                <input type="password" class="form-control" id="pw2" placeholder="" value="" required name="userPW" onchange="check_pw()">
+                &nbsp;<span id="check"></span>
+                <!-- <div class="invalid-feedback">
+                  비밀번호를 확인해보세요.
+                </div> -->
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">이메일</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+              <div class="invalid-feedback">
+                이메일을 입력해주세요.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">주소</label>
+              <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
+              <div class="invalid-feedback">
+                주소를 입력해주세요.
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="aggrement" required>
+              <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+            </div>
+            <div class="mb-4"></div>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    // 웹뷰 화면 나오게 
+    window.onresize= function(){
+                document.getElementsByID("wrap").style.height = window.innerHeight + 'px';
+        };
+
+    //  로그인 클릭 시 로그인 화면 나오는 기능
+
+    function onDisplay() {
+      $('.login').show();
+    }
+
+    function onDisplay2() {
+      $('.input-form').show();
+    }
+
+    function offDisplay() {
+      $('.login').hide();
+      if ($('#slide_text').css('display') == 'none') {
+        $('#slide_text').css('display', 'block');
+        $('#login_btn').html('로그아웃')
+        $('.join_btn').hide();
+      }
+
+    }
+
+
+    function offDisplay2() {
+      $('.input-form').hide();
+
+    }
+
+
+
+    // 슬라이드 기능
+    $(document).ready(function () {
+      $(".btn_menu_open").click(function () {
+        $("#mask").fadeIn(100);
+        $(".slide_menu").show().animate({ right: "0" });
+      });
+      $("#mask, .btn_menu_close").click(function () {
+        $("#mask").fadeOut(100);
+        $(".slide_menu").hide().animate({ right: "0" });
+      });
+    });
+
+
+
+    // join
+    window.addEventListener('load', () => {
+      const forms = document.getElementsByClassName('validation-form');
+
+      Array.prototype.filter.call(forms, (form) => {
+        form.addEventListener('submit', function (event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+
+    function check_pw(){
+            var pw = document.getElementById('pw').value;
+            var SC = ["!","@","#","$","%"];
+            var check_SC = 0;
+ 
+            if(pw.length < 6 || pw.length>16){
+                window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+                document.getElementById('pw').value='';
+            }
+            for(var i=0;i<SC.length;i++){
+                if(pw.indexOf(SC[i]) != -1){
+                    check_SC = 1;
+                }
+            }
+            if(check_SC == 0){
+                window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+                document.getElementById('pw').value='';
+            }
+            if(document.getElementById('pw').value !='' && document.getElementById('pw2').value!=''){
+                if(document.getElementById('pw').value==document.getElementById('pw2').value){
+                    document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+                    document.getElementById('check').style.color='blue';
+                }
+                else{
+                    document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                    document.getElementById('check').style.color='red';
+                }
+            }
+        }
+  </script>
+</body>
+
+</html>
